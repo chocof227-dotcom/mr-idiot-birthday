@@ -1,0 +1,618 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday, Mr. Idiot ♡</title>
+
+<style>
+:root {
+  --pink: #d22f4d;
+  --rose: #bd7186;
+  --cream: #fff8ef;
+  --ink: #684751;
+  --paper: #e1b151;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Georgia, serif;
+  overflow-x: hidden;
+}
+
+/* FLOATING HEARTS */
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  color: #d88c9e;
+  opacity: .55;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+  z-index: 10;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* OPENING SCREEN */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(145deg,#fff4ee,#f5cbd3);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  transition: opacity .8s, visibility .8s;
+}
+
+.intro.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-content h1 {
+  color: #a85d73;
+  font-size: clamp(2.7rem,8vw,5rem);
+  font-weight: normal;
+}
+
+.intro-content p {
+  line-height: 1.8;
+}
+
+button {
+  background: var(--rose);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 27px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 15px;
+  transition: .3s;
+  box-shadow: 0 7px 18px #b86f8330;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  background: #a85d73;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 35px 20px;
+  background: linear-gradient(145deg,#fff8ef,#f5d5dc);
+}
+
+.eyebrow {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font: 11px Arial;
+  color: #a56d79;
+}
+
+h1 {
+  font-size: clamp(3rem,10vw,6rem);
+  font-weight: normal;
+  line-height: 1;
+  color: #a85d73;
+}
+
+.subtitle {
+  max-width: 500px;
+  line-height: 1.9;
+  margin: auto;
+}
+
+/* SECTIONS */
+
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 75px 22px;
+}
+
+.section-title {
+  text-align: center;
+  font-weight: normal;
+  font-size: 2.3rem;
+  color: #a85d73;
+}
+
+.section-sub {
+  text-align: center;
+  color: #a17e85;
+  font: 13px Arial;
+  margin-bottom: 35px;
+}
+
+/* LETTER */
+
+.letter {
+  background: white;
+  padding: clamp(25px,6vw,55px);
+  max-width: 700px;
+  margin: auto;
+  line-height: 2;
+  box-shadow: 0 12px 35px #8d5c6715;
+  border: 1px solid #f0dce0;
+  font-size: 17px;
+}
+
+.signature {
+  margin-top: 25px;
+  color: #a85d73;
+  font-style: italic;
+  font-size: 21px;
+}
+
+/* POLAROIDS */
+
+.polaroids {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+  gap: 30px;
+  align-items: start;
+}
+
+.polaroid {
+  background: white;
+  padding: 12px 12px 20px;
+  box-shadow: 0 10px 25px #76505a20;
+  transform: rotate(var(--tilt));
+  transition: transform .3s;
+  animation: gentleFloat 3s ease-in-out infinite alternate;
+}
+
+.polaroid:hover {
+  transform: rotate(0) scale(1.04);
+}
+
+@keyframes gentleFloat {
+  from { translate: 0 0; }
+  to { translate: 0 -7px; }
+}
+
+.photo {
+  height: 210px;
+  width: 100%;
+  object-fit: cover;
+  background: #f5e3e6;
+}
+
+.caption {
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* TIMELINE */
+
+.timeline {
+  max-width: 650px;
+  margin: auto;
+  border-left: 2px solid #d99baa;
+  padding-left: 28px;
+}
+
+.event {
+  position: relative;
+  margin: 35px 0;
+  line-height: 1.8;
+}
+
+.event:before {
+  content: "♡";
+  position: absolute;
+  left: -40px;
+  color: #bd7186;
+  font-size: 20px;
+}
+
+.event h3 {
+  color: #a85d73;
+  font-weight: normal;
+}
+
+/* SURPRISE */
+
+.surprise {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f8e4e8;
+  border-radius: 25px;
+}
+
+.hidden-note {
+  display: none;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin: 25px auto 0;
+  max-width: 600px;
+  line-height: 2;
+  animation: appear .7s ease;
+}
+
+.hidden-note.show {
+  display: block;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FINAL WISH */
+
+#wish {
+  color: #a85d73;
+  font-size: 19px;
+  line-height: 1.8;
+}
+
+/* FOOTER */
+
+footer {
+  text-align: center;
+  padding: 35px;
+  color: #a17e85;
+  font: 12px Arial;
+}
+
+@media(max-width:500px) {
+  section { padding: 55px 18px; }
+  .photo { height: 170px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- OPENING SCREEN -->
+
+<div class="intro" id="intro">
+  <div class="intro-content">
+
+    <div style="font-size:50px">🎀</div>
+
+    <p class="eyebrow">A special little surprise</p>
+
+    <h1>Hey, Mr. Idiot ♡</h1>
+
+    <p>
+      Someone has made something special for you.
+      <br>
+      And yes, it's your favourite headache.
+    </p>
+
+    <button onclick="openWebsite()">
+      Open your gift ♡
+    </button>
+
+  </div>
+</div>
+
+<!-- HERO -->
+
+<header class="hero">
+
+  <div>
+
+    <p class="eyebrow">Made with love, just for you</p>
+
+    <h1>
+      Happy Birthday,<br>
+      Mr. Idiot ♡
+    </h1>
+
+    <p class="subtitle">
+      To my favourite headache, my personal comedian,
+      and the most irritating buddha dadaji in my life.
+    </p>
+
+    <button onclick="document.getElementById('letter').scrollIntoView()">
+      Explore your surprise ↓
+    </button>
+
+  </div>
+
+</header>
+
+<!-- BIRTHDAY LETTER -->
+
+<section id="letter">
+
+  <h2 class="section-title">A note for you ♡</h2>
+
+  <p class="section-sub">
+    Please read this without acting too cool or full with ego.
+  </p>
+
+  <div class="letter">
+
+    Happy birthday, CHODU! ♡
+
+    <br><br>
+
+    Dekho, tumhara budhapa aa raha hai aur tum buddhe ho rahe ho, Dadaji! Anyway, I hope this year brings you happiness, good health, exciting opportunities and everything you've been wishing for.
+
+    <br><br>
+
+    Plus, mereko gifts bhi de do yaar, because tumhari side se gifts ka contribution is literally 0.01%. And I hate you for that.
+
+    <br><br>
+
+    Thank you for making me cry, irritating me during periods and being a complete idiot. I hope today reminds you how irritating, buddha, dadaji-type uncle you are. Aur ego toh itna hai ki kya hi bolun.
+
+    <br><br>
+
+    Keep chasing your dreams, keep smiling, ghatiya English bolte raho, and please don't become any more annoying than you already are.
+
+    <br><br>
+
+    Here's to more memories, more laughter and many more reasons to call you Mr. Idiot.
+
+    <div class="signature">
+      With lots of love,<br>
+      Naina ♡
+    </div>
+
+  </div>
+
+</section>
+
+<!-- MEMORY WALL -->
+
+<section>
+
+  <h2 class="section-title">Our little memory wall</h2>
+
+  <p class="section-sub">
+    Little moments, big memories.
+  </p>
+
+  <div class="polaroids">
+
+    <div class="polaroid" style="--tilt:-3deg">
+      <img class="photo" src="photo1.jpg" alt="Our favourite memory">
+      <p class="caption">crying moment ♡</p>
+    </div>
+
+    <div class="polaroid" style="--tilt:2deg">
+      <img class="photo" src="photo2.jpg" alt="A silly memory">
+      <p class="caption">Peak idiot behaviour</p>
+    </div>
+
+    <div class="polaroid" style="--tilt:-2deg">
+      <img class="photo" src="photo3.jpg" alt="Another memory">
+      <p class="caption">One for the memories</p>
+    </div>
+
+    <div class="polaroid" style="--tilt:3deg">
+      <img class="photo" src="photo4.jpg" alt="Favourite picture">
+      <p class="caption">Us being us(sleep) ♡</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- TIMELINE -->
+
+<section>
+
+  <h2 class="section-title">Our little story ♡</h2>
+
+  <p class="section-sub">
+    Some moments deserve their own place.
+  </p>
+
+  <div class="timeline">
+
+    <div class="event">
+      <h3>The beginning ♡</h3>
+      <p>Where our little story started.</p>
+    </div>
+
+    <div class="event">
+      <h3>All the silly conversations</h3>
+      <p>All those random talks, jokes and laughs.</p>
+    </div>
+
+    <div class="event">
+      <h3>Our favourite memories</h3>
+      <p>Moments I hope we never forget.</p>
+    </div>
+
+    <div class="event">
+      <h3>You make me cry bohot</h3>
+      <p>Hope this year you will get mature and wont do it</p>
+    </div>
+    <div class="event">
+      <h3>Today — Your birthday!</h3>
+      <p>And another reason to celebrate you.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- SECRET MESSAGE -->
+
+<section>
+
+  <div class="surprise">
+
+    <p class="eyebrow">A little secret</p>
+
+    <h2 class="section-title">
+      One more thing...
+    </h2>
+
+    <p>
+      There's something I haven't told you yet.
+    </p>
+
+    <button onclick="revealMessage()">
+      Tap to reveal ♡
+    </button>
+
+    <div class="hidden-note" id="secret">
+
+      No matter how many times I call you an idiot,
+      I hope you never forget that you are special.
+
+      (UGGGGGGGGGH.)
+
+      <br><br>
+
+      I wish you endless happiness, success,
+      good health and beautiful opportunities.
+
+      <br><br>
+
+      And haan, thoda apna ego kam kar lena.
+      Duniya khatam nahi ho jayegi.
+
+      <br><br>
+
+      Happy birthday, CHODU!
+
+      <br><br>
+
+      I love you, Mr. Idiot. ♡
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FINAL SURPRISE -->
+
+<section>
+
+  <div class="surprise">
+
+    <div style="font-size:45px">💗</div>
+
+    <h2 class="section-title">
+      Your birthday wish
+    </h2>
+
+    <p>
+      Make a wish, close your eyes and smile.
+    </p>
+
+    <button onclick="birthdayWish()">
+      Make a wish ✨
+    </button>
+
+    <p id="wish"></p>
+
+  </div>
+
+</section>
+
+<footer>
+
+  Made especially for Mr. Idiot · with love, Naina ♡
+
+  <br><br>
+
+  Forever your favourite headache.
+
+</footer>
+
+<script>
+
+// OPEN WEBSITE
+
+function openWebsite() {
+  document.getElementById("intro").classList.add("hide");
+}
+
+// HIDDEN MESSAGE
+
+function revealMessage() {
+
+  const note = document.getElementById("secret");
+
+  note.classList.toggle("show");
+
+}
+
+// BIRTHDAY WISH
+
+function birthdayWish() {
+
+  document.getElementById("wish").innerHTML =
+    "May all your dreams come true, idiot. ♡ 🎂";
+
+}
+
+// FLOATING HEARTS
+
+function createHeart() {
+
+  const heart = document.createElement("div");
+
+  heart.className = "heart";
+
+  heart.innerHTML =
+    Math.random() > 0.5 ? "♡" : "♥";
+
+  heart.style.left =
+    Math.random() * 100 + "vw";
+
+  heart.style.fontSize =
+    (15 + Math.random() * 20) + "px";
+
+  heart.style.animationDuration =
+    (5 + Math.random() * 5) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 10000);
+
+}
+
+setInterval(createHeart, 650);
+
+
+
+</script>
+</body>
+</html>
